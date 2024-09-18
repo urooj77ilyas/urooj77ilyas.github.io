@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday, Pilot!</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #87CEEB; /* Sky blue */
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+        }
+        h1, h2 {
+            color: #003366; /* Navy blue */
+        }
+        #timer {
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        .gift-section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .gift {
+            font-size: 2em;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .gift:hover {
+            transform: scale(1.2);
+        }
+        .quote {
+            font-style: italic;
+            color: #555;
+            margin: 20px 0;
+        }
+        .plane {
+            font-size: 2em;
+            animation: fly 20s linear infinite;
+        }
+        @keyframes fly {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        .virtual-gift {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px;
+            display: inline-block;
+            cursor: pointer;
+            position: relative;
+        }
+        .virtual-gift img {
+            max-width: 100px;
+            height: auto;
+        }
+        .popup {
+            position: absolute;
+            display: none;
+            animation: pop 0.5s forwards;
+        }
+        @keyframes pop {
+            0% { transform: scale(0); opacity: 0; }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="plane">✈️</div>
+        <h1>Happy Birthday, Pilot!</h1>
+        <div id="timer"></div>
+        <div class="gift-section">
+            <div class="virtual-gift" onclick="showFlower('rose')">
+                <img src="https://images.unsplash.com/photo-1513104901980-1c1c1c1c1c1c" alt="Rose">
+                <p>Rose</p>
+                <div class="popup" id="rose-popup">🌹</div>
+            </div>
+            <div class="virtual-gift" onclick="showFlower('sunflower')">
+                <img src="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0" alt="Sunflower">
+                <p>Sunflower</p>
+                <div class="popup" id="sunflower-popup">🌻</div>
+            </div>
+            <div class="virtual-gift" onclick="showFlower('lily')">
+                <img src="https://images.unsplash.com/photo-1555685812-1c1c1c1c1c1c" alt="Lily">
+                <p>Lily</p>
+                <div class="popup" id="lily-popup">🌷</div>
+            </div>
+        </div>
+        <p class="quote" id="quote"></p>
+        <p class="message">Wishing you blue skies and tailwinds on your birthday and always!</p>
+        
+        <h2>Virtual Gifts</h2>
+        <div class="gift-section">
+            <div class="virtual-gift" onclick="showMessage('A new logbook for your adventures!')">
+                <img src="https://images.unsplash.com/photo-1581091012180-1c1c1c1c1c1c" alt="Pilot Logbook">
+                <p>Pilot Logbook</p>
+            </div>
+            <div class="virtual-gift" onclick="showMessage('For your next flight!')">
+                <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9" alt="Aviator Sunglasses">
+                <p>Aviator Sunglasses</p>
+            </div>
+            <div class="virtual-gift" onclick="showMessage('To always find your way home!')">
+                <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9" alt="Vintage Compass">
+                <p>Vintage Compass</p>
+            </div>
+        </div>
+
+        <h2>Love Quotes for My Pilot</h2>
+        <div id="love-quotes"></div>
+
+        <p>With love,<br>Your Co-pilot in Life</p>
+    </div>
+
+    <script>
+        const quotes = [
+            "The sky is not the limit, it's home.",
+            "Life is a journey, enjoy the flight.",
+            "Keep calm and fly on.",
+            "In the cockpit of life, you're the captain.",
+            "Your love makes my heart soar."
+        ];
+
+        function showFlower(flower) {
+            const popup = document.getElementById(`${flower}-popup`);
+            popup.style.display = 'block';
+            setTimeout(() => {
+                popup.style.display = 'none';
+            }, 1000); // Show for 1 second
+        }
+
+        function showMessage(message) {
+            alert(message);
+        }
+
+        function updateQuote() {
+            const quoteElement = document.getElementById('quote');
+            quoteElement.textContent = quotes[Math.floor(Math.random() * quotes.length)];
+        }
+
+        function displayLoveQuotes() {
+            const loveQuotesElement = document.getElementById('love-quotes');
+            const loveQuotes = [
+                "My love for you is as vast as the open sky.",
+                "You're the wind beneath my wings.",
+                "Our love story is written in the stars.",
+                "With you, every day feels like flying first class.",
+                "You've got clearance to land in my heart, always."
+            ];
+            loveQuotes.forEach(quote => {
+                const p = document.createElement('p');
+                p.textContent = quote;
+                p.className = 'quote';
+                loveQuotesElement.appendChild(p);
+            });
+        }
+
+        updateQuote();
+        setInterval(updateQuote, 10000); // Change quote every 10 seconds
+        displayLoveQuotes();
+    </script>
+</body>
+</html>
+
+
